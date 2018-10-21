@@ -22,15 +22,12 @@ public class SubjectService {
     private SubjectRepository subjectRepository;
 
     public List<Subject> getAllSubjects() {
-        System.out.println("sdfsdfds");
         Iterator<Subject> studentIterator = subjectRepository.findAll().iterator();
         List<Subject> subjectList = new ArrayList<>();
         while (studentIterator.hasNext()) {
             Subject subject = studentIterator.next();
-            System.out.println(subject);
             subjectList.add(subject);
         }
-        System.out.println("Nothing left");
         return subjectList;
     }
 }

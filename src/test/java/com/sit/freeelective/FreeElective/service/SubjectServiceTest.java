@@ -14,20 +14,23 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  *
  * @author wdrdr
  */
-@WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
-public class RegiterServiceTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SubjectServiceTest {
     @Autowired
     SubjectService subjectService;
 
-    public RegiterServiceTest() {
+    public SubjectServiceTest() {
     }
 
     @BeforeClass
@@ -56,10 +59,12 @@ public class RegiterServiceTest {
         subjectList.add(new Subject(2, "INT491", "Cloud-native application development", "Kittiphan Puapholthep", 30));
         subjectList.add(new Subject(3, "INT491", "Management Information System", "Assoc. Prof. Dr. Nipon Charoenkitkarn", 30));
         subjectList.add(new Subject(4, "INT492", "Data Center System Design", "Pichai Kositpantavong", 30));
-        //SubjectService subjectService = new SubjectService();
-        System.out.println(subjectService.getAllSubjects());
-        //assertEquals(subjectService.getAllSubjects(), subjectList);
-        System.out.println("WTF Test");
+        System.out.println(subjectList.get(0));
+        List<Subject> allSubjects = subjectService.getAllSubjects();
+        assertEquals(allSubjects.get(0).toString(), subjectList.get(0).toString());
+        assertEquals(allSubjects.get(1).toString(), subjectList.get(1).toString());
+        assertEquals(allSubjects.get(2).toString(), subjectList.get(2).toString());
+        assertEquals(allSubjects.get(3).toString(), subjectList.get(3).toString());
     }
 
 }

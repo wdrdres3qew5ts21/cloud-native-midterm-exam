@@ -98,4 +98,5 @@ public class Subject {
         return "Subject{" + "id=" + id + ", courseId=" + courseId + ", courseName=" + courseName + ", lecturer=" + lecturer + ", maxStudentEnrollment=" + maxStudentEnrollment + ", currentStudentEnrollment=" + currentStudentEnrollment + '}';
     }
 
+
 }
