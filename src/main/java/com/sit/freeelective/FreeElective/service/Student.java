@@ -18,6 +18,8 @@ public class Student {
 
     @Id
     private long studentId;
+    
+    private String password;
 
     private String name;
 
