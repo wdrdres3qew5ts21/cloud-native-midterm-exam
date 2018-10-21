@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sit.freeelective.FreeElective.service;
+package com.sit.freeelective.FreeElective;
 
 import com.sit.freeelective.FreeElective.subject.Subject;
 import com.sit.freeelective.FreeElective.subject.SubjectService;
@@ -16,18 +16,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  *
  * @author wdrdr
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class SubjectServiceTest {
     @Autowired
     SubjectService subjectService;
@@ -35,18 +32,6 @@ public class SubjectServiceTest {
     public SubjectServiceTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-        System.out.println("!!! Start Testing Register Service !!!");
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
 
 //    @Test
 //    public void testSomeMethod() {
@@ -54,7 +39,7 @@ public class SubjectServiceTest {
 //        fail("The test case is a prototype.");
 //    }
 
-    @Test
+    //@Test
     public void showAllFreeElectiveSubject() {
         List<Subject> subjectList = new ArrayList<>();
         subjectList.add(new Subject(1, "INT492", "Big Data Analytic", "Dr.Praisan Padungweang", 30));

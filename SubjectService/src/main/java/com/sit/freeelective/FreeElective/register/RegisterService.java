@@ -19,16 +19,18 @@ import org.springframework.stereotype.Service;
  * @author wdrdr
  */
 @Service
-public class RegiterService {
+public class RegisterService {
 
     @Autowired
     private StudentRepository studentRepository;
+    
 
     public void registerSubjectForStudent(Map<String, Object> request) {
         ArrayList<Integer> selectedSubjectId = (ArrayList<Integer>) (request.get("id"));
         Student student = this.parseStudent(request);
-        this.isStudentYearMeetRequirement(student, selectedSubjectId);
         System.out.println("Refactor work : " + student);
+        this.isStudentYearMeetRequirement(student, selectedSubjectId);
+        
     }
 
     public Student parseStudent(Map<String, Object> request) {

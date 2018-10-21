@@ -6,6 +6,7 @@
 package com.sit.freeelective.FreeElective.register;
 
 import com.sit.freeelective.FreeElective.student.Student;
+import com.sit.freeelective.FreeElective.student.StudentRepository;
 import com.sit.freeelective.FreeElective.student.StudentService;
 import com.sit.freeelective.FreeElective.subject.Subject;
 import com.sit.freeelective.FreeElective.subject.SubjectRepository;
@@ -44,10 +45,27 @@ public class RegisterController {
 
     @Autowired
     private RegisterService registRegiterService;
+    
+    @Autowired
+    private StudentRepository studentRepository;
+    
+    @Autowired
+    private SubjectRepository subjectRepository;
 
     @GetMapping("/")
     public String helloWorld() {
         long id = 59130500097l;
+        return "Hello World Son!!!" + id;
+    }
+    
+    @GetMapping("/saveMany")
+    public String testManyToMany() {
+        long id = 59130500097l;
+        Student student = studentRepository.findById(59130500097l).get();
+        System.out.println("Work!"+student);
+        Subject subject = subjectRepository.findById(1).get();
+        System.out.println("Subject : "+subject);
+        
         return "Hello World Son!!!" + id;
     }
 
