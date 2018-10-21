@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sit.freeelective.FreeElective.service;
+package com.sit.freeelective.FreeElective.subject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,7 +21,17 @@ public class SubjectService {
     @Autowired
     private SubjectRepository subjectRepository;
 
-    public List<Subject> getAllSubjects() {
+    public Iterable<Subject> getAllSubjects() {
+//        Iterator<Subject> studentIterator = subjectRepository.findAll().iterator();
+//        List<Subject> subjectList = new ArrayList<>();
+//        while (studentIterator.hasNext()) {
+//            Subject subject = studentIterator.next();
+//            subjectList.add(subject);
+//        }
+        return subjectRepository.findAll();
+    }
+    
+    public List<Subject> getAllSubjectsList() {
         Iterator<Subject> studentIterator = subjectRepository.findAll().iterator();
         List<Subject> subjectList = new ArrayList<>();
         while (studentIterator.hasNext()) {
@@ -30,4 +40,7 @@ public class SubjectService {
         }
         return subjectList;
     }
+    
+    
+    
 }

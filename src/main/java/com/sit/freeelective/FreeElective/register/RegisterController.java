@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sit.freeelective.FreeElective.service;
+package com.sit.freeelective.FreeElective.register;
 
+import com.sit.freeelective.FreeElective.student.Student;
+import com.sit.freeelective.FreeElective.student.StudentService;
+import com.sit.freeelective.FreeElective.subject.Subject;
+import com.sit.freeelective.FreeElective.subject.SubjectRepository;
+import com.sit.freeelective.FreeElective.subject.SubjectService;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +33,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class RegisterController {
 
     @Autowired
-    private SubjectRepository subjectRepository;
+    private SubjectService subjectService;
+    
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping("/")
     public String helloWorld() {
@@ -48,20 +56,19 @@ public class RegisterController {
 
     @GetMapping("/student/{id}")
     public Student getStudent(@PathVariable String id) {
-        System.out.println("Student ID : " + id);
-        Student student = new Student(59130500097l, "Supakorn", "Trakulmaiphol", "IT", "SIT", 3);
+        Student student = studentService.getStudentById(Long.parseLong(id));
         return student;
     }
 
     @GetMapping("/subjects")
     public Iterable<Subject> getSubect() {
 //        List<Subject> subjectList = new ArrayList<>();
-//        subjectList.add(subjectRepository.save(new Subject(1, "INT492", "Big Data Analytic", "Dr.Praisan Padungweang", 30)));
-//        subjectList.add(subjectRepository.save(new Subject(2, "INT491", "Cloud-native application development", "Kittiphan Puapholthep", 30)));
-//        subjectList.add(subjectRepository.save(new Subject(3, "INT491", "Management Information System", "Assoc. Prof. Dr. Nipon Charoenkitkarn", 30)));
-//        subjectList.add(subjectRepository.save(new Subject(4, "INT492", "Data Center System Design", "Pichai Kositpantavong", 30)));
-//        List<Subject> subjectList = subjectRepository.findAll();
-        return subjectRepository.findAll();
+//        subjectList.add(subjectService.save(new Subject(1, "INT492", "Big Data Analytic", "Dr.Praisan Padungweang", 30)));
+//        subjectList.add(subjectService.save(new Subject(2, "INT491", "Cloud-native application development", "Kittiphan Puapholthep", 30)));
+//        subjectList.add(subjectService.save(new Subject(3, "INT491", "Management Information System", "Assoc. Prof. Dr. Nipon Charoenkitkarn", 30)));
+//        subjectList.add(subjectService.save(new Subject(4, "INT492", "Data Center System Design", "Pichai Kositpantavong", 30)));
+//        List<Subject> subjectList = subjectService.findAll();
+        return subjectService.getAllSubjects();
     }
 
     @PutMapping("/{id}")

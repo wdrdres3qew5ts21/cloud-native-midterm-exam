@@ -5,6 +5,8 @@
  */
 package com.sit.freeelective.FreeElective.service;
 
+import com.sit.freeelective.FreeElective.subject.Subject;
+import com.sit.freeelective.FreeElective.subject.SubjectService;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.AfterClass;
@@ -60,7 +62,7 @@ public class SubjectServiceTest {
         subjectList.add(new Subject(3, "INT491", "Management Information System", "Assoc. Prof. Dr. Nipon Charoenkitkarn", 30));
         subjectList.add(new Subject(4, "INT492", "Data Center System Design", "Pichai Kositpantavong", 30));
         System.out.println(subjectList.get(0));
-        List<Subject> allSubjects = subjectService.getAllSubjects();
+        List<Subject> allSubjects = subjectService.getAllSubjectsList();
         assertEquals(allSubjects.get(0).toString(), subjectList.get(0).toString());
         assertEquals(allSubjects.get(1).toString(), subjectList.get(1).toString());
         assertEquals(allSubjects.get(2).toString(), subjectList.get(2).toString());

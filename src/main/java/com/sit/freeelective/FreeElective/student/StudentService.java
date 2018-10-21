@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sit.freeelective.FreeElective.register;
+package com.sit.freeelective.FreeElective.student;
 
-import com.sit.freeelective.FreeElective.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,15 @@ import org.springframework.stereotype.Service;
  * @author wdrdr
  */
 @Service
-public class RegiterService {
+public class StudentService {
+    
     @Autowired
     private StudentRepository studentRepository;
     
+    public Student getStudentById(long studentId){
+        Student student = studentRepository.getOne(studentId);
+        System.out.println(student);
+        return student;
+    }
     
 }

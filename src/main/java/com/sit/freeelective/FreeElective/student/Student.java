@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sit.freeelective.FreeElective.service;
+package com.sit.freeelective.FreeElective.student;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sit.freeelective.FreeElective.subject.Subject;
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.ws.BindingType;
@@ -14,11 +18,12 @@ import javax.xml.ws.BindingType;
  * @author wdrdr
  */
 @Entity
-public class Student {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Student implements Serializable {
 
     @Id
     private long studentId;
-    
+
     private String password;
 
     private String name;
@@ -28,9 +33,10 @@ public class Student {
     private String department;
 
     private String faculty;
-    
+
     private int year;
 
+//    private List<Subject> subject;
     public Student() {
 
     }
@@ -79,8 +85,6 @@ public class Student {
     public String getFaculty() {
         return faculty;
     }
-    
-    
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
@@ -90,7 +94,5 @@ public class Student {
     public String toString() {
         return "Student{" + "studentId=" + studentId + ", name=" + name + ", surname=" + surname + ", department=" + department + ", faculty=" + faculty + ", year=" + year + '}';
     }
-    
-    
 
 }

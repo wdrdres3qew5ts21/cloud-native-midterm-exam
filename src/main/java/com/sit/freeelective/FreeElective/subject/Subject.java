@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sit.freeelective.FreeElective.service;
+package com.sit.freeelective.FreeElective.subject;
 
+import com.sit.freeelective.FreeElective.student.Student;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +22,7 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     private String courseId;
 
     private String courseName;
@@ -30,6 +32,8 @@ public class Subject {
     private int maxStudentEnrollment;
 
     private int currentStudentEnrollment;
+
+//    private List<Student> students;
 
     public Subject() {
 
@@ -43,8 +47,6 @@ public class Subject {
         this.maxStudentEnrollment = maxStudentEnrollment;
     }
 
-    
-
     public int getId() {
         return id;
     }
@@ -52,7 +54,7 @@ public class Subject {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getCourseId() {
         return courseId;
     }
@@ -97,6 +99,5 @@ public class Subject {
     public String toString() {
         return "Subject{" + "id=" + id + ", courseId=" + courseId + ", courseName=" + courseName + ", lecturer=" + lecturer + ", maxStudentEnrollment=" + maxStudentEnrollment + ", currentStudentEnrollment=" + currentStudentEnrollment + '}';
     }
-
 
 }
