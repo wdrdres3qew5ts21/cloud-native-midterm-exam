@@ -51,7 +51,7 @@ public class RegiterServiceTest {
     /**
      * Test of parseStudent method, of class RegisterService.
      */
-    //@Test
+    @Test
     public void testParseStudent() {
         System.out.println("parseStudent");
         Map<String, Object> request= new HashMap<>();

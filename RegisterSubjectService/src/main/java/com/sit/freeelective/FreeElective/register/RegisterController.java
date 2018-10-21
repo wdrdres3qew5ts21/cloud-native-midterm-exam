@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 /**
  *
  * @author wdrdr
+ * Class นี้คือ Class หลักสำหรับใช้รัน Controller ในการลงทะเบียนจองวิชา
  */
 @CrossOrigin()
 @RestController
@@ -45,12 +46,6 @@ public class RegisterController {
     @Autowired
     private RegisterService registRegiterService;
 
-    @GetMapping("/")
-    public String helloWorld() {
-        long id = 59130500097l;
-        return "Hello World Son!!!" + id;
-    }
-
     // กำลังทำ
     @PostMapping("/login")
     public ResponseEntity<HashMap> login(@RequestBody HashMap<String, Object> loginData) {
@@ -58,7 +53,7 @@ public class RegisterController {
         studentService.login(loginData);
         return new ResponseEntity<HashMap>(loginData, HttpStatus.OK);
     }
-
+    
     @GetMapping("/students")
     public ResponseEntity<List<Student>> get() {
         return new ResponseEntity<List<Student>>(studentService.getAllStudent(), HttpStatus.OK);
@@ -75,7 +70,6 @@ public class RegisterController {
         return subjectService.getAllSubjects();
     }
 
-    
     @PostMapping("/register/subject")
     public ResponseEntity<Map<String, Object>> registerSubject(@RequestBody Map<String, Object> request) {
         return new ResponseEntity<Map<String, Object>>(registRegiterService.registerSubjectForStudent(request), HttpStatus.OK);

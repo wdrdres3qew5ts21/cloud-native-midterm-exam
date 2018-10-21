@@ -23,23 +23,22 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author wdrdr
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class SubjectServiceTest {
+
     @Autowired
     SubjectService subjectService;
 
     public SubjectServiceTest() {
     }
 
-
 //    @Test
 //    public void testSomeMethod() {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
-    //@Test
+    @Test
     public void showAllFreeElectiveSubject() {
         List<Subject> subjectList = new ArrayList<>();
         subjectList.add(new Subject(1, "INT492", "Big Data Analytic", "Dr.Praisan Padungweang", 30));
@@ -48,10 +47,12 @@ public class SubjectServiceTest {
         subjectList.add(new Subject(4, "INT492", "Data Center System Design", "Pichai Kositpantavong", 30));
         System.out.println(subjectList.get(0));
         List<Subject> allSubjects = subjectService.getAllSubjectsList();
-        assertEquals(allSubjects.get(0).toString(), subjectList.get(0).toString());
-        assertEquals(allSubjects.get(1).toString(), subjectList.get(1).toString());
-        assertEquals(allSubjects.get(2).toString(), subjectList.get(2).toString());
-        assertEquals(allSubjects.get(3).toString(), subjectList.get(3).toString());
+        assertEquals(allSubjects.get(0).getCourseName(), subjectList.get(0).getCourseName());
+        assertEquals(allSubjects.get(1).getCourseName(), subjectList.get(1).getCourseName());
+        assertEquals(allSubjects.get(2).getCourseName(), subjectList.get(2).getCourseName());
+        assertEquals(allSubjects.get(3).getCourseName(), subjectList.get(3).getCourseName());
     }
+    
+    
 
 }

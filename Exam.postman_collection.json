@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "ee04fd8f-daad-40b3-b5d8-efbc592b778d",
+		"name": "Exam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:9999/register/subject",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": [\n\t\t1, 2\t\n\t],\n\t\"student\": {\n\t\t\"studentId\": 59130500097,\n\t\t\"name\": \"Supakorn\",\n\t    \"surname\": \"Trakulmaiphol\",\n\t    \"department\": \"IT\",\n\t    \"faculty\": \"SIT\",\n\t    \"year\": 3\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:9999/register/subject",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"register",
+						"subject"
+					],
+					"query": [
+						{
+							"key": "postData",
+							"value": "my name is the duq",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9999/subjects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9999/subjects",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9999/students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9999/students",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9999/student/59130500097",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9999/student/59130500097",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"student",
+						"59130500097"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
