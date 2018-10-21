@@ -5,9 +5,11 @@
  */
 package com.sit.freeelective.FreeElective.service;
 
+import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +38,14 @@ public class RegisterController {
         return student;
     }
 
-    @GetMapping("/student")
-    public Object get(@PathVariable String id) {
-        return null;
+    @GetMapping("/students")
+    public ResponseEntity<List<Student>> get() {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(59130500097l, "Supakorn", "Trakulmaiphol", "IT", "SIT", 3));
+        students.add(new Student(59130500097l, "Supakorn", "Trakulmaiphol", "IT", "SIT", 3));
+        students.add(new Student(59130500097l, "Supakorn", "Trakulmaiphol", "IT", "SIT", 3));
+        students.add(new Student(59130500097l, "Supakorn", "Trakulmaiphol", "IT", "SIT", 3));
+        return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
