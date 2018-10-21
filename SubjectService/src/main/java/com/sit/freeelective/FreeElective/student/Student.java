@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sit.freeelective.FreeElective.subject.Subject;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -37,9 +38,21 @@ public class Student implements Serializable {
 
     private int year;
 
-    @ManyToMany(mappedBy = "students")
+    @ManyToMany(mappedBy = "students",
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            })
     private List<Subject> subject;
-    
+
+    public List<Subject> getSubject() {
+        return subject;
+    }
+
+    public void setSubject(List<Subject> subject) {
+        this.subject = subject;
+    }
+
     public Student() {
 
     }

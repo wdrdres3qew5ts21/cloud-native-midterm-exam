@@ -8,10 +8,17 @@ package com.sit.freeelective.FreeElective.register;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sit.freeelective.FreeElective.student.Student;
 import com.sit.freeelective.FreeElective.student.StudentRepository;
+import com.sit.freeelective.FreeElective.subject.Subject;
+import com.sit.freeelective.FreeElective.subject.SubjectService;
+import com.zaxxer.hikari.HikariDataSource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import javax.activation.DataSource;
+import javax.persistence.Query;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,15 +29,23 @@ import org.springframework.stereotype.Service;
 public class RegisterService {
 
     @Autowired
-    private StudentRepository studentRepository;
-    
+    HikariDataSource dataSource;
 
-    public void registerSubjectForStudent(Map<String, Object> request) {
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private SubjectService subjectService;
+
+    public Map<String, Object> registerSubjectForStudent(Map<String, Object> request) {
+        Map<String, Object> response = new HashMap<>();
         ArrayList<Integer> selectedSubjectId = (ArrayList<Integer>) (request.get("id"));
         Student student = this.parseStudent(request);
         System.out.println("Refactor work : " + student);
-        this.isStudentYearMeetRequirement(student, selectedSubjectId);
-        
+        if (this.isStudentYearMeetRequirement(student, selectedSubjectId)) {
+            response = this.registerSubjectToStudentIfAvaiable(student, selectedSubjectId);
+        }
+        return response;
     }
 
     public Student parseStudent(Map<String, Object> request) {
@@ -59,9 +74,26 @@ public class RegisterService {
         return isMeetYearRequirement;
     }
 
-    public boolean isSubjectAvailable(Student student, boolean isMeetYearRequirement) {
-        
-        return false;
+    public Map<String, Object> registerSubjectToStudentIfAvaiable(Student student, ArrayList<Integer> selectedSubjectId) {
+        Map<String, Object> response = new HashMap<>();
+        for (Integer subjectId : selectedSubjectId) {
+            Subject subject = subjectService.getSubjectById(subjectId);
+            if (subject.getMaxStudentEnrollment() > subject.getCurrentStudentEnrollment()) {
+                int beforeUpdateEnrollment = subject.getCurrentStudentEnrollment();
+                System.out.println("before : " + beforeUpdateEnrollment);
+                ++beforeUpdateEnrollment;
+                int afterUpdateEnrollment = beforeUpdateEnrollment;
+                System.out.println("after : " + afterUpdateEnrollment);
+                subject.setCurrentStudentEnrollment(afterUpdateEnrollment);
+                subjectService.save(subject);
+                JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+                jdbc.update("insert into subject_students values (?, ?)", subjectId, student.getStudentId());
+                response.put("Subject " + subjectId, true);
+            } else {
+                response.put("Subject " + subjectId, false);
+            }
+        }
+        return response;
     }
 
 }

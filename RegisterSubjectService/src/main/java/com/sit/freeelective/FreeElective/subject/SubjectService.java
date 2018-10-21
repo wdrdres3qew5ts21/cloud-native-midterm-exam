@@ -34,10 +34,15 @@ public class SubjectService {
         }
         return subjectList;
     }
-    
-    public Subject getSubject(){
-        return null;
+
+    public Subject getSubjectById(int id) {
+       return subjectRepository.getOne(id);
     }
+    public Subject save(Subject subject){
+        return subjectRepository.save(subject);
+    }
+    
+   
     
     
     

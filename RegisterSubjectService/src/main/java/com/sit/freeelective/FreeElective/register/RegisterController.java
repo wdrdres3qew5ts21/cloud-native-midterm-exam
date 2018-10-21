@@ -76,24 +76,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register/subject")
-    public ResponseEntity<Map> registerSubject(@RequestBody Map<String, Object> request) {
-        registRegiterService.registerSubjectForStudent(request);
-        return new ResponseEntity<Map>(request, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>> registerSubject(@RequestBody Map<String, Object> request) {
+        return new ResponseEntity<Map<String, Object>>(registRegiterService.registerSubjectForStudent(request), HttpStatus.OK);
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable String id, @RequestBody Object input) {
-        return null;
-    }
-
-    @PostMapping
-    public ResponseEntity<?> post(@RequestBody Object input) {
-        return null;
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        return null;
-    }
-
 }

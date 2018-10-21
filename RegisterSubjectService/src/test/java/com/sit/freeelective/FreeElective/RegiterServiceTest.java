@@ -84,7 +84,7 @@ public class RegiterServiceTest {
     }
 
     /**
-     * Test of isSubjectAvailable method, of class RegisterService.
+     * Test of registerSubjectToStudentIfAvaiable method, of class RegisterService.
      */
     //@Test
     public void testIsSubjectAvailable() {

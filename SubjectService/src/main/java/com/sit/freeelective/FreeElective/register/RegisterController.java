@@ -65,7 +65,10 @@ public class RegisterController {
         System.out.println("Work!"+student);
         Subject subject = subjectRepository.findById(1).get();
         System.out.println("Subject : "+subject);
-        
+        List<Subject> subjectsList = new ArrayList<>();
+        subjectsList.add(subject);
+        student.setSubject(subjectsList);
+        studentRepository.save(student);
         return "Hello World Son!!!" + id;
     }
 
