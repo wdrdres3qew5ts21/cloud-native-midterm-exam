@@ -1,5 +1,6 @@
 # cloud-native-midterm-exam
 ลุย ลุย ลุย !!! Pivotal X Son.JS
+https://www.youtube.com/watch?v=8pCm1mnrVgA
 <h1>Config</h1>
 <br/>
 server.port=9999
@@ -22,7 +23,7 @@ spring.redis.port=6379
 <br/>
 
 <hr/>
-Class RegisterController
+<h1>Class RegisterController</h1>
 POST : /register/subject
 
 { // ID ของวิชาที่ผู้ใช้กดเลือกรายชื่อวิชาเข้ามา
@@ -39,3 +40,28 @@ POST : /register/subject
 	}
 }
 <hr/>
+
+<h1>Class RegisterController</h1>
+GET : /subjects
+แสดงรายชื่อของวิชาออกมาทั้งหมด
+
+
+<hr/>
+
+<h1>Class RegisterController</h1>
+GET : /students
+แสดงรายชื่อของนักศึกษาทุกคนออกมา
+
+<hr/>
+<h1>Class RegisterController </h1>
+GET : /student/{id}
+เมื่อใส่ รหัสนักศึกษาจะแสดงรายละเอียดของนักศึกษาออกมาเช่น
+/student/59130500097
+
+
+
+
+
+
+
+
