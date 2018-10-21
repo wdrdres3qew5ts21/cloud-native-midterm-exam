@@ -86,16 +86,5 @@ public class RegiterServiceTest {
     /**
      * Test of registerSubjectToStudentIfAvaiable method, of class RegisterService.
      */
-    //@Test
-    public void testIsSubjectAvailable() {
-        System.out.println("isSubjectAvailable");
-        Student student = null;
-        boolean isMeetYearRequirement = false;
-        RegisterService instance = new RegisterService();
-        boolean expResult = false;
-        boolean result = instance.isSubjectAvailable(student, isMeetYearRequirement);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-    
+ 
 }

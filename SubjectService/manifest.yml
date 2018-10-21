@@ -1,6 +1,0 @@
-applications:
-- name: free-elective
-  memory: 256MB
-  path: target/VideoService-0.0.1-SNAPSHOT.jar
-  
-  

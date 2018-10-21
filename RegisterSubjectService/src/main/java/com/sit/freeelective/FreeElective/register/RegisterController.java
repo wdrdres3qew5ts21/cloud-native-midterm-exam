@@ -75,6 +75,7 @@ public class RegisterController {
         return subjectService.getAllSubjects();
     }
 
+    
     @PostMapping("/register/subject")
     public ResponseEntity<Map<String, Object>> registerSubject(@RequestBody Map<String, Object> request) {
         return new ResponseEntity<Map<String, Object>>(registRegiterService.registerSubjectForStudent(request), HttpStatus.OK);
