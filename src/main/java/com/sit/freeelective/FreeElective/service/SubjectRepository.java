@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author wdrdr
  */
 @Repository
-public interface NewRepository extends CrudRepository<Subject, String> {
+public interface SubjectRepository extends CrudRepository<Subject, String> {
     
 }

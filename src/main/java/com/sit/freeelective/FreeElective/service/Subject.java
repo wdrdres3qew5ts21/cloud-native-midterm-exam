@@ -6,6 +6,8 @@
 package com.sit.freeelective.FreeElective.service;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -16,6 +18,9 @@ import javax.persistence.Id;
 public class Subject {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    
     private String courseId;
 
     private String courseName;
@@ -30,12 +35,22 @@ public class Subject {
 
     }
 
-    public Subject(String courseId, String courseName, String lecturer, int maxStudentEnrollment, int currentStudentEnrollment) {
+    public Subject(int id, String courseId, String courseName, String lecturer, int maxStudentEnrollment) {
+        this.id = id;
         this.courseId = courseId;
         this.courseName = courseName;
         this.lecturer = lecturer;
         this.maxStudentEnrollment = maxStudentEnrollment;
-        this.currentStudentEnrollment = currentStudentEnrollment;
+    }
+
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getCourseId() {
@@ -80,11 +95,7 @@ public class Subject {
 
     @Override
     public String toString() {
-        return "Subject{" + "courseId=" + courseId + ", courseName=" + courseName + ", lecturer=" + lecturer + ", maxStudentEnrollment=" + maxStudentEnrollment + ", currentStudentEnrollment=" + currentStudentEnrollment + '}';
+        return "Subject{" + "id=" + id + ", courseId=" + courseId + ", courseName=" + courseName + ", lecturer=" + lecturer + ", maxStudentEnrollment=" + maxStudentEnrollment + ", currentStudentEnrollment=" + currentStudentEnrollment + '}';
     }
-    
-    
-    
-    
 
 }
